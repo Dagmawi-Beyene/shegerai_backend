@@ -1,9 +1,5 @@
 import admin from 'firebase-admin'
 import { Configuration, OpenAIApi } from 'openai'
-import superjson from 'superjson'
-import { streamCompletion } from '@fortaine/openai/stream'
-
-import { ChatGPTBrowserClient } from '@waylaidwanderer/chatgpt-api'
 
 // require('dotenv').config()
 
@@ -19,7 +15,7 @@ if (admin.apps.length === 0) {
 }
 
 const configuration = new Configuration({
-	apiKey: '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'
+	apiKey: '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'
 })
 const openai = new OpenAIApi(configuration)
 

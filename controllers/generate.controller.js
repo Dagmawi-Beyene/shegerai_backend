@@ -16,12 +16,16 @@ if (admin.apps.length === 0) {
 }
 
 const configuration = new Configuration({
-	apiKey: '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'
+	apiKey: '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'
 })
 const openai = new OpenAIApi(configuration)
 
 async function createCompletion(req, res) {
 	const body = JSON.parse(req.body)
+	if (!configuration.apiKey) {
+		res.status(401).json({ error: 'API key not found' })
+		return
+	}
 
 	if (req.method !== 'POST') {
 		res.status(405).json({ error: 'Method Not Allowed' })
@@ -89,19 +93,21 @@ async function createCompletion(req, res) {
 			res.flushHeaders()
 
 			const getText = async (callback) => {
-				const completion = await openai.createCompletion(
-					{
-						model: body.model || 'text-davinci-003',
-						prompt: body.text,
-						temperature: body.temperature || 0.7,
-						top_p: body.top_p || 1,
-						frequency_penalty: body.frequency_penalty || 0,
-						presence_penalty: body.presence_penalty || 0,
-						max_tokens: body.max_tokens || 256,
-						stream: true
-					},
-					{ responseType: 'stream' }
-				)
+				const data = {
+					model: body.model || 'text-davinci-003',
+					prompt: body.text,
+					temperature: body.temperature || 0.7,
+					top_p: body.top_p || 1,
+					frequency_penalty: body.frequency_penalty || 0,
+					presence_penalty: body.presence_penalty || 0,
+					max_tokens: body.max_tokens || 256,
+					stream: true
+				}
+				console.log(data)
+				const completion = await openai.createCompletion(data, {
+					responseType: 'stream'
+				})
+
 				return new Promise((resolve) => {
 					let result = ''
 					completion.data.on('data', (data) => {
