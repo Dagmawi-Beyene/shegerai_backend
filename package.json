@@ -1,0 +1,43 @@
+{
+  "name": "appengine-hello-world",
+  "description": "Simple Hello World Node.js sample for Google App Engine Flexible Environment.",
+  "version": "0.0.2",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "author": "Google Inc.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
+  },
+  "engines": {
+    "node": "=v16.19.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha --exit test/*.test.js",
+    "dev": "nodemon ./app.ts"
+  },
+  "dependencies": {
+    "@fortaine/openai": "^5.3.1",
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "@waylaidwanderer/chatgpt-api": "^1.21.3",
+    "@waylaidwanderer/fetch-event-source": "^3.0.1",
+    "axios": "^1.2.2",
+    "chatgpt": "^4.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.17.1",
+    "firebase-admin": "^11.4.1",
+    "openai": "^3.2.0",
+    "puppeteer": "^19.5.0",
+    "socket.io": "^4.5.4",
+    "superjson": "^1.12.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.0.0"
+  }
+}
